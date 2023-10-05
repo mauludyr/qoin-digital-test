@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>GET user by id</name>
+   <name>Get User by Id</name>
    <tag></tag>
    <elementGuidId>4fc9a73f-74bc-40c9-8fc4-73c6c0da00d6</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
@@ -15,7 +15,7 @@
    <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>GET</restRequestMethod>
-   <restUrl>${GlobalVariable.baseUrl}/api/users/${id}</restUrl>
+   <restUrl>${GlobalVariable.baseUrl}/api/users/${GlobalVariable.globalId}</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -24,13 +24,6 @@
    <soapServiceFunction></soapServiceFunction>
    <socketTimeout>-1</socketTimeout>
    <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
-   <variables>
-      <defaultValue>7</defaultValue>
-      <description></description>
-      <id>c4249c68-7dc1-4ffc-ad8e-a4109ce4bb7b</id>
-      <masked>false</masked>
-      <name>id</name>
-   </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
 import com.kms.katalon.core.testobject.RequestObject

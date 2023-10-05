@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
-   <description></description>
-   <name>Get All User</name>
+   <description>Menggunakan Metode GET Bertujuan Untuk memeriksa apakah response nya Sudah Sesuai 
+Dengan apa yang di harapkan yaitu Menampilkan List Dari User.</description>
+   <name>Get List User</name>
    <tag></tag>
-   <elementGuidId>34f9f3aa-1081-4454-a222-5e9650403ba9</elementGuidId>
+   <elementGuidId>b22e0315-2add-4525-87e5-83f379bd1ef9</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <autoUpdateContent>true</autoUpdateContent>
@@ -12,7 +13,7 @@
    <httpBody></httpBody>
    <httpBodyContent></httpBodyContent>
    <httpBodyType></httpBodyType>
-   <katalonVersion>8.6.8</katalonVersion>
+   <katalonVersion>7.7.2</katalonVersion>
    <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
    <restRequestMethod>GET</restRequestMethod>
@@ -37,6 +38,15 @@ import internal.GlobalVariable as GlobalVariable
 
 RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 
-ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()</verificationScript>
+ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
+
+
+WS.verifyResponseStatusCode(response, 200)
+
+assertThat(response.getStatusCode()).isEqualTo(200)
+
+assertThat(response.getStatusCode()).isIn(Arrays.asList(200, 201, 202))
+
+WS.verifyElementPropertyValue(response, 'data[4].first_name', 'Charles')</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

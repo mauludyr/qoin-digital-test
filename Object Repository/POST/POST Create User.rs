@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
-   <description></description>
-   <name>Update User</name>
+   <description>Menggunakan Metode POST Bertujuan untuk memeriksa apakah response nya sudah sesuai
+Dengan apa yang di harapkan yaitu dapat Membuat User Baru.</description>
+   <name>POST Create User</name>
    <tag></tag>
-   <elementGuidId>986e6ac4-88a3-46b4-9c30-2bb4939aaed7</elementGuidId>
+   <elementGuidId>45542c0b-7b48-4a69-99c5-e6017849238d</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
-   <autoUpdateContent>false</autoUpdateContent>
+   <autoUpdateContent>true</autoUpdateContent>
    <connectionTimeout>-1</connectionTimeout>
    <followRedirects>false</followRedirects>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n    \&quot;name\&quot;: \&quot;${name}\&quot;,\n    \&quot;job\&quot;: \&quot;${job}\&quot;\n}&quot;,
+  &quot;text&quot;: &quot;{\n    \&quot;name\&quot;: \&quot;morpheus\&quot;,\n    \&quot;job\&quot;: \&quot;leader\&quot;\n}&quot;,
   &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
@@ -22,13 +23,13 @@
       <name>Content-Type</name>
       <type>Main</type>
       <value>application/json</value>
-      <webElementGuid>f25373f7-8b37-4f51-b019-13c602e722b6</webElementGuid>
+      <webElementGuid>0b07ade4-ed3f-4c76-8bdb-d228ad158246</webElementGuid>
    </httpHeaderProperties>
-   <katalonVersion>8.6.8</katalonVersion>
+   <katalonVersion>7.7.2</katalonVersion>
    <maxResponseSize>-1</maxResponseSize>
    <migratedVersion>5.4.1</migratedVersion>
-   <restRequestMethod>PUT</restRequestMethod>
-   <restUrl>${GlobalVariable.baseUrl}/api/users/${id}</restUrl>
+   <restRequestMethod>POST</restRequestMethod>
+   <restUrl>${GlobalVariable.baseUrl}/api/users</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -37,27 +38,6 @@
    <soapServiceFunction></soapServiceFunction>
    <socketTimeout>-1</socketTimeout>
    <useServiceInfoFromWsdl>true</useServiceInfoFromWsdl>
-   <variables>
-      <defaultValue>7</defaultValue>
-      <description></description>
-      <id>c405e5dd-993f-4852-a458-f66c43958606</id>
-      <masked>false</masked>
-      <name>id</name>
-   </variables>
-   <variables>
-      <defaultValue>'user-edit'</defaultValue>
-      <description></description>
-      <id>d3ca0a53-26c7-492c-b335-e90ddab99b79</id>
-      <masked>false</masked>
-      <name>name</name>
-   </variables>
-   <variables>
-      <defaultValue>'freelance'</defaultValue>
-      <description></description>
-      <id>36d9e956-d861-4ad5-bd73-e327171d55cd</id>
-      <masked>false</masked>
-      <name>job</name>
-   </variables>
    <verificationScript>import static org.assertj.core.api.Assertions.*
 
 import com.kms.katalon.core.testobject.RequestObject
@@ -70,6 +50,12 @@ import internal.GlobalVariable as GlobalVariable
 
 RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 
-ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()</verificationScript>
+ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
+
+WS.verifyResponseStatusCode(response, 201)
+
+assertThat(response.getStatusCode()).isEqualTo(201)
+
+assertThat(response.getStatusCode()).isIn(Arrays.asList(200, 201, 202))</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>
